@@ -1,3 +1,4 @@
+import React from "react";
 export default function Section({ id, title, subtitle, children }) {
     return (
         <section id={id} className="container-hero py-20 md:py-28">

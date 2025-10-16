@@ -1,3 +1,4 @@
+import React from "react";
 import { motion } from 'framer-motion'
 import Section from './components/Section'
 import Badge from './components/Badge'
@@ -145,7 +146,7 @@ function Contact() {
     return (
         <Section id="contact" title="Contact" subtitle="Open to senior frontend roles and advanced UI engineering.">
             <div className="card p-6 md:p-8">
-                <p className="text-slate-300">Email: <a href="mailto:riyaz@example.com" className="text-brand-400 hover:underline">riyaz@example.com</a></p>
+                <p className="text-slate-300">Email: <a href="mailto:riyazreengu@example.com" className="text-brand-400 hover:underline">riyazreengu@example.com</a></p>
                 <p className="mt-2 text-slate-300">Location: Madurai, India</p>
                 <div className="mt-4 flex gap-4">
                     <a href="https://github.com/" className="text-brand-400 hover:underline">GitHub</a>
