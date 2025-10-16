@@ -13,7 +13,7 @@ function Nav() {
     return (
         <header className="sticky top-0 z-40 border-b border-white/5 bg-slate-950/70 backdrop-blur">
             <nav className="container-hero flex items-center justify-between py-4">
-                <a href="#home" className="font-display text-lg md:text-xl font-semibold">Riyaz</a>
+                <a href="#home" className="font-display text-lg md:text-xl font-semibold">Mohammed Riyaz Khan F</a>
                 <div className="hidden md:flex items-center gap-6">
                     {links.map(l => (
                         <a key={l.href} href={l.href} className="text-slate-300 hover:text-white transition">{l.label}</a>
@@ -37,7 +37,7 @@ function Hero() {
                     transition={{ duration: 0.6 }}
                     className="font-display text-4xl md:text-6xl font-bold leading-tight"
                 >
-                    Hi, I’m <span className="text-brand-400">Riyaz</span> — Senior Frontend Engineer
+                    Hi, I’m <span className="text-brand-400">Riyaz Khan</span> — Senior Frontend Engineer
                 </motion.h1>
                 <p className="mt-5 text-slate-300 max-w-xl">
                     8+ years crafting pixel-perfect, performant web experiences with React, Next.js, Redux, and GraphQL. I build delightful UIs with strong architecture and attention to detail.
