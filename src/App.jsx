@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { motion } from 'framer-motion'
 import Section from './components/Section'
 import Badge from './components/Badge'
@@ -19,8 +19,13 @@ function Nav() {
                     {links.map(l => (
                         <a key={l.href} href={l.href} className="text-slate-300 hover:text-white transition">{l.label}</a>
                     ))}
-                    <a href="/resume.pdf" className="ml-2 rounded-xl bg-brand-500 px-4 py-2 text-sm font-medium text-slate-950 hover:bg-brand-400 transition">
-                        Download Resume
+                    <a
+                        href="resume.pdf"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="ml-2 rounded-xl bg-brand-500 px-4 py-2 text-sm font-medium text-slate-950 hover:bg-brand-400 transition"
+                    >
+                        View Resume
                     </a>
                 </div>
             </nav>
@@ -48,9 +53,9 @@ function Hero() {
                     <a href="#contact" className="rounded-xl border border-white/10 px-5 py-3 font-medium hover:bg-white/10 transition">Contact</a>
                 </div>
                 <div className="mt-8 flex items-center gap-3">
-                    <a href="https://github.com/" target="_blank" className="text-slate-400 hover:text-white">GitHub</a>
+                    <a href="https://github.com/riyaz-personal" target="_blank" className="text-slate-400 hover:text-white">GitHub</a>
                     <span className="text-slate-700">•</span>
-                    <a href="https://www.linkedin.com/" target="_blank" className="text-slate-400 hover:text-white">LinkedIn</a>
+                    <a href="https://www.linkedin.com/in/riyaz-khan-5839a1137" target="_blank" className="text-slate-400 hover:text-white">LinkedIn</a>
                 </div>
             </div>
             <motion.div
@@ -128,18 +133,68 @@ function Skills() {
 }
 
 function Testimonials() {
+    const [activeImage, setActiveImage] = useState(null);
+    // return (
+    //     <Section id="testimonials" title="Testimonials" subtitle="Kind words from teammates and stakeholders.">
+    //         <div className="grid md:grid-cols-2 gap-6">
+    //             {TESTIMONIALS.map((t, i) => (
+    //                 <div className="card p-6" key={i}>
+    //                     <p className="text-slate-200">“{t.text}”</p>
+    //                     <p className="mt-3 text-sm text-slate-400">— {t.name}</p>
+    //                 </div>
+    //             ))}
+    //         </div>
+    //     </Section>
+    // )
     return (
-        <Section id="testimonials" title="Testimonials" subtitle="Kind words from teammates and stakeholders.">
-            <div className="grid md:grid-cols-2 gap-6">
-                {TESTIMONIALS.map((t, i) => (
-                    <div className="card p-6" key={i}>
-                        <p className="text-slate-200">“{t.text}”</p>
-                        <p className="mt-3 text-sm text-slate-400">— {t.name}</p>
+        <section id="testimonials" className="py-20 bg-slate-900 text-white">
+            <div className="max-w-5xl mx-auto px-6">
+                <h2 className="text-3xl font-bold mb-10 text-center">
+                    Appreciations & Recommendations
+                </h2>
+
+                <div className="grid md:grid-cols-3 gap-8">
+                    {TESTIMONIALS.map((t, idx) => (
+                        <div
+                            key={idx}
+                            className="bg-slate-800 rounded-2xl p-6 shadow-md hover:shadow-lg transition"
+                        >
+                            <h3 className="text-xl font-semibold text-center">{t.name}</h3>
+                            <p className="text-sm text-slate-400 text-center mb-3">{t.role}</p>
+                            <p className="text-slate-300 text-sm text-center italic mb-4">
+                                “{t.feedback}”
+                            </p>
+
+                            <div className="flex justify-center gap-2 flex-wrap">
+                                {t.images?.map((img, i) => (
+                                    <img
+                                        key={i}
+                                        src={img}
+                                        alt={`${t.name} appreciation`}
+                                        className="w-24 h-24 rounded-lg object-cover border border-slate-700 cursor-pointer hover:opacity-80"
+                                        onClick={() => setActiveImage(img)}
+                                    />
+                                ))}
+                            </div>
+                        </div>
+                    ))}
+                </div>
+
+                {activeImage && (
+                    <div
+                        className="fixed inset-0 bg-black bg-opacity-70 flex items-center justify-center z-50"
+                        onClick={() => setActiveImage(null)}
+                    >
+                        <img
+                            src={activeImage}
+                            alt="testimonial proof"
+                            className="max-w-full max-h-[90vh] rounded-xl shadow-2xl"
+                        />
                     </div>
-                ))}
+                )}
             </div>
-        </Section>
-    )
+        </section>
+    );
 }
 
 function Contact() {
@@ -149,8 +204,8 @@ function Contact() {
                 <p className="text-slate-300">Email: <a href="mailto:riyazreengu@example.com" className="text-brand-400 hover:underline">riyazreengu@example.com</a></p>
                 <p className="mt-2 text-slate-300">Location: Madurai, India</p>
                 <div className="mt-4 flex gap-4">
-                    <a href="https://github.com/" className="text-brand-400 hover:underline">GitHub</a>
-                    <a href="https://www.linkedin.com/" className="text-brand-400 hover:underline">LinkedIn</a>
+                    <a href="https://github.com/riyaz-personal" className="text-brand-400 hover:underline">GitHub</a>
+                    <a href="https://www.linkedin.com/in/riyaz-khan-5839a1137" className="text-brand-400 hover:underline">LinkedIn</a>
                 </div>
             </div>
             <p className="mt-6 text-xs text-slate-500">© {new Date().getFullYear()} Mohammed Riyaz Khan F</p>
